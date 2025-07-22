@@ -12,6 +12,7 @@ export interface ITelegramContext {
   webApp?: WebApp;
   user?: WebAppUser;
   onClose?: () => void;
+  queryId?: string;
 }
 
 export const TelegramContext = createContext<ITelegramContext>({});
@@ -33,6 +34,7 @@ export const TelegramProvider = ({ children }: { children: ReactNode }) => {
       ? {
           webApp,
           user: webApp.initDataUnsafe.user,
+          queryId: webApp.initDataUnsafe.query_id,
           onClose: () => webApp?.close(),
         }
       : {};

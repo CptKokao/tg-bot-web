@@ -17,6 +17,7 @@ const Form = () => {
     webApp?.sendData(JSON.stringify(data));
   }, [country, street, subject, webApp]);
 
+  // Событие на клик Main кнопки
   useEffect(() => {
     webApp?.onEvent("mainButtonClicked", onSendData);
     return () => {
@@ -24,12 +25,14 @@ const Form = () => {
     };
   }, [onSendData, webApp]);
 
+  // Меняет название Main кнопки
   useEffect(() => {
     webApp?.MainButton.setParams({
       text: "Отправить данные",
     });
   }, [webApp]);
 
+  // Скрывает Main кнопки если есть ошибки валидации
   useEffect(() => {
     if (!street || !country) {
       webApp?.MainButton.hide();
