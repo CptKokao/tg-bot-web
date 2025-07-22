@@ -12,6 +12,7 @@ import type { ITelegramUser, IWebApp } from "../types/types";
 export interface ITelegramContext {
   webApp?: IWebApp;
   user?: ITelegramUser;
+  onClose?: () => void;
 }
 
 export const TelegramContext = createContext<ITelegramContext>({});
@@ -32,6 +33,7 @@ export const TelegramProvider = ({ children }: { children: ReactNode }) => {
       ? {
           webApp,
           user: webApp.initDataUnsafe.user,
+          onClose: webApp?.close(),
         }
       : {};
   }, [webApp]);

@@ -4,7 +4,7 @@ import { TelegramProvider, useTelegram } from "../contexts /TelegramProvider";
 // import { useRouter } from "next/router";
 
 const WebApp = () => {
-  const { user, webApp } = useTelegram();
+  const { onClose, user, webApp } = useTelegram();
   // const { push } = useRouter();
 
   // useEffect(() => {
@@ -18,7 +18,12 @@ const WebApp = () => {
 
   console.log(webApp);
   console.log(user?.username);
-  return <div>{user?.username}</div>;
+  return (
+    <div>
+      {user?.username}
+      <button onClick={onClose}>onClose</button>
+    </div>
+  );
 };
 
 const WithTelegramProvider = () => {
