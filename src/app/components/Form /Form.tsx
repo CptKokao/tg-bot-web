@@ -38,15 +38,15 @@ const Form = () => {
     }
   }, [country, street, webApp]);
 
-  const onChangeCountry = (e) => {
+  const onChangeCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCountry(e.target.value);
   };
 
-  const onChangeStreet = (e) => {
+  const onChangeStreet = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStreet(e.target.value);
   };
 
-  const onChangeSubject = (e) => {
+  const onChangeSubject = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSubject(e.target.value);
   };
 
