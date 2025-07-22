@@ -1,40 +1,19 @@
 "use client";
-import { TelegramProvider, useTelegram } from "../contexts /TelegramProvider";
-import Form from "./components/Form /Form";
-// import { useRouter } from "next/router";
+
+import { useTelegram } from "../contexts /TelegramProvider";
 
 const WebApp = () => {
   const { onClose, user, webApp } = useTelegram();
-  // const { push } = useRouter();
-
-  // useEffect(() => {
-  //   if (user?.id) {
-  //     // push({
-  //     //   pathname: "/role",
-  //     //   query: { user: user?.id },
-  //     // });
-  //   }
-  // }, [user]);
 
   console.log(webApp);
   console.log(user?.username);
-  // console.log(window.Telegram?.WebApp);
 
   return (
     <div>
       {user?.username}
-      <button onClick={onClose}>onClose</button>
-      <Form />
+      <button onClick={onClose}>Закрыть</button>
     </div>
   );
 };
 
-const WithTelegramProvider = () => {
-  return (
-    <TelegramProvider>
-      <WebApp />
-    </TelegramProvider>
-  );
-};
-
-export default WithTelegramProvider;
+export default WebApp;
