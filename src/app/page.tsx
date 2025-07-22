@@ -1,34 +1,32 @@
 "use client";
 
-// import "./App.css";
-import { useEffect, useState } from "react";
-import { useTelegram } from "./useTelegram";
-// import Header from "./components/Header/Header";
-// import {Route, Routes} from 'react-router-dom'
-// import ProductList from "./components/ProductList/ProductList";
-// import Form from "./components/Form/Form";
+import { TelegramProvider, useTelegram } from "../contexts /TelegramProvider";
+// import { useRouter } from "next/router";
 
-function App() {
-  const [tg, setTg] = useState();
+const WebApp = () => {
+  const { user, webApp } = useTelegram();
+  // const { push } = useRouter();
 
-  useEffect(() => {
-    if (window?.Telegram?.WebApp) {
-      setTg(window?.Telegram?.WebApp);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (user?.id) {
+  //     // push({
+  //     //   pathname: "/role",
+  //     //   query: { user: user?.id },
+  //     // });
+  //   }
+  // }, [user]);
 
-  const onClose = () => {
-    tg?.close();
-  };
+  console.log(webApp);
+  console.log(user?.username);
+  return <div>{user?.username}</div>;
+};
 
+const WithTelegramProvider = () => {
   return (
-    <div className="App">
-      <div className={"header"}>
-        <button onClick={onClose}>Закрыть</button>
-        <span className={"username"}>{tg?.initDataUnsafe?.user?.username}</span>
-      </div>
-    </div>
+    <TelegramProvider>
+      <WebApp />
+    </TelegramProvider>
   );
-}
+};
 
-export default App;
+export default WithTelegramProvider;
