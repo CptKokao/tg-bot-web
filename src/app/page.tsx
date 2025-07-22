@@ -1,5 +1,6 @@
 "use client";
 import { TelegramProvider, useTelegram } from "../contexts /TelegramProvider";
+import Form from "./components/Form /Form";
 // import { useRouter } from "next/router";
 
 const WebApp = () => {
@@ -23,6 +24,7 @@ const WebApp = () => {
     <div>
       {user?.username}
       <button onClick={onClose}>onClose</button>
+      <Form />
     </div>
   );
 };

@@ -1,4 +1,3 @@
-import Script from "next/script";
 import {
   createContext,
   useContext,
@@ -7,18 +6,17 @@ import {
   useState,
   ReactNode,
 } from "react";
-import type { ITelegramUser, IWebApp } from "../types/types";
 
 export interface ITelegramContext {
-  webApp?: IWebApp;
-  user?: ITelegramUser;
+  webApp?: WebApp;
+  user?: WebAppUser;
   onClose?: () => void;
 }
 
 export const TelegramContext = createContext<ITelegramContext>({});
 
 export const TelegramProvider = ({ children }: { children: ReactNode }) => {
-  const [webApp, setWebApp] = useState<IWebApp | null>(null);
+  const [webApp, setWebApp] = useState<WebApp | null>(null);
 
   useEffect(() => {
     const app = (window as any).Telegram?.WebApp;
@@ -34,7 +32,7 @@ export const TelegramProvider = ({ children }: { children: ReactNode }) => {
       ? {
           webApp,
           user: webApp.initDataUnsafe.user,
-          onClose: webApp?.close(),
+          onClose: () => webApp?.close(),
         }
       : {};
   }, [webApp]);
