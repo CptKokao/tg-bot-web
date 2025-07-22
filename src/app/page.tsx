@@ -1,5 +1,4 @@
 "use client";
-
 import { TelegramProvider, useTelegram } from "../contexts /TelegramProvider";
 // import { useRouter } from "next/router";
 
@@ -18,6 +17,8 @@ const WebApp = () => {
 
   console.log(webApp);
   console.log(user?.username);
+  // console.log(window.Telegram?.WebApp);
+
   return (
     <div>
       {user?.username}

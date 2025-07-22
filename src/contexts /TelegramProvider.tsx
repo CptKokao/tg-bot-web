@@ -23,6 +23,7 @@ export const TelegramProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const app = (window as any).Telegram?.WebApp;
     if (app) {
+      console.log("app.ready();");
       app.ready();
       setWebApp(app);
     }
@@ -40,7 +41,6 @@ export const TelegramProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <TelegramContext.Provider value={value}>
-      <Script src="https://telegram.org/js/telegram-web-app.js" />
       {children}
     </TelegramContext.Provider>
   );
